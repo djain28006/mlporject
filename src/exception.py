@@ -1,5 +1,5 @@
 import sys
-from typing import Any
+# importing sys because it helps to get the details of the exception that has occurred
 
 def error_message_detail(error, error_detail):
     _, _, exc_tb = error_detail.exc_info()
@@ -10,8 +10,9 @@ def error_message_detail(error, error_detail):
     return error_message
 
 class CustomException(Exception):
-    def __init__(self, error_message, error_detail):
+    def __init__(self, error_message, error_detail):    
         super().__init__(error_message)
+        # Calls parent class (Exception) constructor.
         self.error_message = error_message_detail(error_message, error_detail=error_detail)
 
     def __str__(self):

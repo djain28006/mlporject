@@ -14,11 +14,14 @@ from src.components.data_transformation import DataTransformationConfig
 from src.components.model_trainer import ModelTrainer
 from src.components.model_trainer import ModelTrainerConfig
 
-@dataclass
+# @dataclass helps to create classes which mainly store data with less boilerplate code.
+# it automatically generates special methods like __init__() and __repr__() based on class attributes.
+@dataclass 
 class DataIngestionConfig:
     raw_data_path: str = os.path.join('artifacts', 'raw_data.csv')
     train_data_path: str = os.path.join('artifacts', 'train_data.csv')
     test_data_path: str = os.path.join('artifacts', 'test_data.csv')
+
 class DataIngestion:
     def __init__(self):
         self.ingestion_config = DataIngestionConfig()
@@ -34,7 +37,7 @@ class DataIngestion:
         logging.info("Starting data ingestion process")
         try:
             # Read the dataset
-            df = pd.read_csv('notebook\data\stud.csv')
+            df = pd.read_csv(source_file_path)
             logging.info("Dataset read successfully")
 
             # Ensure the artifacts directory exists
@@ -64,7 +67,7 @@ class DataIngestion:
         
 if __name__ == "__main__":
     obj = DataIngestion()
-    train_data,test_data=obj.initiate_data_ingestion(source_file_path='notebook\data\stud.csv')
+    train_data,test_data=obj.initiate_data_ingestion(source_file_path="notebook/data/stud.csv")
 
     data_transformation = DataTransformation()
     train_arr,test_arr,_=data_transformation.initiate_data_transformation(train_data,test_data)
