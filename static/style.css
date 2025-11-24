@@ -12,14 +12,16 @@ body {
     min-height: 100vh;
 }
 
-/* Center container */
+/* Responsive Center Container */
 .container {
-    width: 400px;
+    width: 100%;
+    max-width: 450px;           /* Perfect for laptop + mobile */
     background: #ffffff;
     padding: 25px 30px;
     border-radius: 15px;
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
     animation: fadeIn 0.8s ease-in-out;
+    margin: 20px;               /* Prevent touching edges on mobile */
 }
 
 /* Headings */
@@ -72,7 +74,7 @@ button:hover {
     background: #3554b0;
 }
 
-/* Error message */
+/* Error message box */
 .error {
     background: #ffe1e1;
     color: #d9534f;
@@ -121,4 +123,35 @@ button:hover {
 
 .back-link:hover {
     text-decoration: underline;
+}
+
+/* -----------------------------------
+      MOBILE RESPONSIVE CHANGES
+----------------------------------- */
+@media (max-width: 480px) {
+
+    body {
+        padding: 15px;
+        align-items: flex-start;
+    }
+
+    .container {
+        padding: 20px;
+        border-radius: 12px;
+        max-width: 100%;
+    }
+
+    input, select, button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    h1, h2, h3 {
+        font-size: 20px;
+    }
+
+    .result-box {
+        font-size: 16px;
+        padding: 12px;
+    }
 }
